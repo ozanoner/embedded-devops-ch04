@@ -10,9 +10,7 @@
         "source=extensionCache,target=/root/.vscode-server/extensions,type=volume"
     ],
     "runArgs": [
-		"--privileged",
-		"--env-file",
-		"${localWorkspaceFolder}/.env"
+		"--privileged"
 	],
     "customizations": {
         "vscode": {

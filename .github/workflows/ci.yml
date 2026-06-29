@@ -1,0 +1,25 @@
+name: Project build and test
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Create empty .env file
+        run: touch .env
+      - name: Run tests in Dev Container
+        uses: devcontainers/ci@v0.3
+        with:
+          env: |
+            WOKWI_CLI_TOKEN=${{ secrets.WOKWI_CLI_TOKEN }}
+          runCmd: |
+            idf.py -C blinky build
+            robot -d tmp/ tests/wokwi_serial.robot
