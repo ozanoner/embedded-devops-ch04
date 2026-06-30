@@ -28,7 +28,7 @@ static void handle_button_click();
 
 void app_main()
 {
-    ESP_LOGI(TAG, "Example start");
+    ESP_LOGI(TAG, "Example application");
     AppBSP_init();
     AppBSPButton_set_handler(handle_button_click);
 
