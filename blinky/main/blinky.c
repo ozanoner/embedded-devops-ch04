@@ -2,6 +2,7 @@
 #include "app_bsp.h"
 #include "FreeAct.h"
 #include "esp_log.h"
+#include "esp_heap_caps.h"
 
 #define TAG "app"
 
@@ -26,9 +27,17 @@ static void Blinky_ctor(Blinky *const me);
 static void Blinky_dispatch(Blinky *const me, Event const *const e);
 static void handle_button_click();
 
+static void print_memory_info()
+{
+    size_t free_dram = heap_caps_get_free_size(MALLOC_CAP_8BIT);
+    ESP_LOGI(TAG, "Free 8-bit accessible DRAM: %u bytes", free_dram);
+}
+
 void app_main()
 {
     ESP_LOGI(TAG, "Example application");
+    print_memory_info();
+
     AppBSP_init();
     AppBSPButton_set_handler(handle_button_click);
 
