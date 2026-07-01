@@ -18,9 +18,9 @@ Serial log should contain expected messages
 
     ${out}=    Get File    ${OUTPUT DIR}/wokwi_output.txt
 
-   # 1) "app: Example application" appears exactly once
-    Should Contain    ${out}    app: Example application
-    ${ex_cnt}=    Evaluate    '''${out}'''.count('app: Example application')
+   # 1) "app: Blinky application" appears exactly once
+    Should Contain    ${out}    app: Blinky application
+    ${ex_cnt}=    Evaluate    '''${out}'''.count('app: Blinky application')
     Should Be Equal As Integers    ${ex_cnt}    1
 
 

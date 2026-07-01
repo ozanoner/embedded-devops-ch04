@@ -35,7 +35,7 @@ static void print_memory_info()
 
 void app_main()
 {
-    ESP_LOGI(TAG, "Example application");
+    ESP_LOGI(TAG, "Blinky application");
     print_memory_info();
 
     AppBSP_init();
